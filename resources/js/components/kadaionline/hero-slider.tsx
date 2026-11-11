@@ -62,16 +62,18 @@ export default function HeroSlider() {
         <section className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 {/* Main Hero Slider (2 cols on lg) */}
-                <div className="relative overflow-hidden rounded-2xl shadow-xs lg:col-span-2 group min-h-[300px] sm:min-h-[340px] bg-neutral-950">
+                <div className="group relative min-h-[300px] overflow-hidden rounded-2xl bg-neutral-950 shadow-xs sm:min-h-[340px] lg:col-span-2">
                     {SLIDES.map((slide, index) => (
                         <div
                             key={slide.id}
-                            className={`absolute inset-0 flex flex-col justify-between p-6 sm:p-10 transition-opacity duration-700 bg-gradient-to-r ${slide.bgGradient} ${
-                                index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                            className={`absolute inset-0 flex flex-col justify-between bg-gradient-to-r p-6 transition-opacity duration-700 sm:p-10 ${slide.bgGradient} ${
+                                index === currentSlide
+                                    ? 'z-10 opacity-100'
+                                    : 'pointer-events-none z-0 opacity-0'
                             }`}
                         >
                             {/* Visual Photo on Right */}
-                            <div className="absolute right-0 top-0 bottom-0 w-3/5 opacity-40 sm:opacity-55 mix-blend-luminosity pointer-events-none overflow-hidden">
+                            <div className="pointer-events-none absolute top-0 right-0 bottom-0 w-3/5 overflow-hidden opacity-40 mix-blend-luminosity sm:opacity-55">
                                 <img
                                     src={slide.image}
                                     alt={slide.title}
@@ -82,18 +84,20 @@ export default function HeroSlider() {
 
                             {/* Headline & Specs */}
                             <div className="relative z-10 max-w-md">
-                                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+                                <h1 className="text-2xl leading-tight font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
                                     {slide.title}
                                 </h1>
-                                <p className="mt-2 text-xs sm:text-sm text-neutral-200">
+                                <p className="mt-2 text-xs text-neutral-200 sm:text-sm">
                                     {slide.subtitle}
                                 </p>
 
                                 <div className="mt-4 flex items-center gap-2">
-                                    <span className={`inline-block px-3 py-1 rounded-md text-xs sm:text-sm font-black tracking-wide ${slide.badgeColor}`}>
+                                    <span
+                                        className={`inline-block rounded-md px-3 py-1 text-xs font-black tracking-wide sm:text-sm ${slide.badgeColor}`}
+                                    >
                                         {slide.voucherText}
                                     </span>
-                                    <span className="inline-block px-2.5 py-1 rounded-md text-xs font-semibold bg-white/20 text-white">
+                                    <span className="inline-block rounded-md bg-white/20 px-2.5 py-1 text-xs font-semibold text-white">
                                         {slide.priceTag}
                                     </span>
                                 </div>
@@ -103,7 +107,7 @@ export default function HeroSlider() {
                             <div className="relative z-10 mt-6">
                                 <a
                                     href={slide.ctaLink}
-                                    className="inline-flex items-center gap-2 rounded-xl bg-yellow-400 px-5 py-2.5 text-xs sm:text-sm font-bold text-neutral-950 shadow-md transition-all hover:bg-yellow-300 hover:translate-y-[-1px] active:scale-[0.98]"
+                                    className="inline-flex items-center gap-2 rounded-xl bg-yellow-400 px-5 py-2.5 text-xs font-bold text-neutral-950 shadow-md transition-all hover:translate-y-[-1px] hover:bg-yellow-300 active:scale-[0.98] sm:text-sm"
                                 >
                                     <span>{slide.ctaText}</span>
                                     <ArrowRight className="h-4 w-4" />
@@ -117,7 +121,7 @@ export default function HeroSlider() {
                         type="button"
                         onClick={prevSlide}
                         aria-label="Slide sebelumnya"
-                        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white opacity-0 transition-all hover:bg-black/90 group-hover:opacity-100 active:scale-95"
+                        className="absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-black/90 active:scale-95"
                     >
                         <ChevronLeft className="h-5 w-5" />
                     </button>
@@ -125,13 +129,13 @@ export default function HeroSlider() {
                         type="button"
                         onClick={nextSlide}
                         aria-label="Slide berikutnya"
-                        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white opacity-0 transition-all hover:bg-black/90 group-hover:opacity-100 active:scale-95"
+                        className="absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-black/90 active:scale-95"
                     >
                         <ChevronRight className="h-5 w-5" />
                     </button>
 
                     {/* Indicators */}
-                    <div className="absolute bottom-4 left-6 sm:left-10 z-20 flex gap-2">
+                    <div className="absolute bottom-4 left-6 z-20 flex gap-2 sm:left-10">
                         {SLIDES.map((_, i) => (
                             <button
                                 key={i}
@@ -139,7 +143,9 @@ export default function HeroSlider() {
                                 aria-label={`Menuju slide ${i + 1}`}
                                 onClick={() => setCurrentSlide(i)}
                                 className={`h-2 rounded-full transition-all ${
-                                    i === currentSlide ? 'w-8 bg-yellow-400' : 'w-2 bg-white/40 hover:bg-white'
+                                    i === currentSlide
+                                        ? 'w-8 bg-yellow-400'
+                                        : 'w-2 bg-white/40 hover:bg-white'
                                 }`}
                             />
                         ))}
@@ -151,13 +157,13 @@ export default function HeroSlider() {
                     {/* Top Promo Banner */}
                     <a
                         href="#rekomendasi-section"
-                        className="group relative flex h-[155px] sm:h-[162px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-r from-amber-300 via-amber-300 to-yellow-400 p-5 shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md"
+                        className="group relative flex h-[155px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-r from-amber-300 via-amber-300 to-yellow-400 p-5 shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md sm:h-[162px]"
                     >
                         <div className="z-10 max-w-[65%]">
-                            <span className="inline-block rounded bg-red-600 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide">
+                            <span className="inline-block rounded bg-red-600 px-2 py-0.5 text-[10px] font-black tracking-wide text-white uppercase">
                                 Diskon s/d 76%
                             </span>
-                            <h2 className="mt-1.5 text-base sm:text-lg font-black text-neutral-900 leading-tight">
+                            <h2 className="mt-1.5 text-base leading-tight font-black text-neutral-900 sm:text-lg">
                                 Keset Kamar Mandi Mulai 15RB-an
                             </h2>
                             <span className="mt-2 inline-flex items-center text-xs font-bold text-neutral-900 group-hover:underline">
@@ -176,16 +182,16 @@ export default function HeroSlider() {
                     {/* Bottom Promo Banner */}
                     <a
                         href="#promo-1111"
-                        className="group relative flex h-[155px] sm:h-[162px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 p-5 text-white shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md"
+                        className="group relative flex h-[155px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 p-5 text-white shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md sm:h-[162px]"
                     >
                         <div className="z-10 max-w-[70%]">
-                            <div className="inline-flex items-center gap-1 rounded bg-yellow-400 px-2 py-0.5 text-[10px] font-black uppercase text-neutral-950">
+                            <div className="inline-flex items-center gap-1 rounded bg-yellow-400 px-2 py-0.5 text-[10px] font-black text-neutral-950 uppercase">
                                 BAZAR 10RB-AN
                             </div>
-                            <h2 className="mt-1.5 text-base sm:text-lg font-black tracking-tight text-yellow-300 leading-tight">
+                            <h2 className="mt-1.5 text-base leading-tight font-black tracking-tight text-yellow-300 sm:text-lg">
                                 EKSTRA VOUCHER 7RB
                             </h2>
-                            <p className="text-[11px] text-blue-200 mt-0.5">
+                            <p className="mt-0.5 text-[11px] text-blue-200">
                                 Belanja hemat perlengkapan rumah tangga hari ini
                             </p>
                             <span className="mt-2 inline-flex items-center text-xs font-bold text-white group-hover:underline">

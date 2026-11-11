@@ -35,7 +35,7 @@ export default function Welcome() {
             const existing = prev.find((i) => i.id === item.id);
             if (existing) {
                 return prev.map((i) =>
-                    i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+                    i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i,
                 );
             }
             return [
@@ -53,16 +53,19 @@ export default function Welcome() {
     };
 
     const handleUpdateQuantity = (id: string, delta: number) => {
-        setCartItems((prev) =>
-            prev
-                .map((item) => {
-                    if (item.id === id) {
-                        const newQty = item.quantity + delta;
-                        return newQty > 0 ? { ...item, quantity: newQty } : null;
-                    }
-                    return item;
-                })
-                .filter(Boolean) as CartItem[]
+        setCartItems(
+            (prev) =>
+                prev
+                    .map((item) => {
+                        if (item.id === id) {
+                            const newQty = item.quantity + delta;
+                            return newQty > 0
+                                ? { ...item, quantity: newQty }
+                                : null;
+                        }
+                        return item;
+                    })
+                    .filter(Boolean) as CartItem[],
         );
     };
 
@@ -70,26 +73,32 @@ export default function Welcome() {
         setCartItems((prev) => prev.filter((item) => item.id !== id));
     };
 
-    const totalCartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const totalCartCount = cartItems.reduce(
+        (sum, item) => sum + item.quantity,
+        0,
+    );
 
     return (
         <>
             <Head>
-                <title>KadaiOnline - #SudahPastiMurahnya Ritel &amp; Grosir Terpercaya</title>
+                <title>
+                    KadaiOnline - #SudahPastiMurahnya Ritel &amp; Grosir
+                    Terpercaya
+                </title>
                 <meta
                     name="description"
                     content="Belanja produk hobi, perkakas, elektronik, dan peralatan rumah tangga dengan harga distributor langsung dan jaminan garansi resmi di KadaiOnline."
                 />
             </Head>
 
-            <div className="min-h-screen bg-[#f8fafc] text-neutral-900 font-sans antialiased selection:bg-rose-500 selection:text-white">
+            <div className="min-h-screen bg-[#f8fafc] font-sans text-neutral-900 antialiased selection:bg-rose-500 selection:text-white">
                 {/* Header & Navigation */}
                 <KadaiHeader
                     cartCount={totalCartCount}
                     onCartClick={() => setIsCartOpen(true)}
                 />
 
-                <main className="space-y-6 sm:space-y-8 pb-12">
+                <main className="space-y-6 pb-12 sm:space-y-8">
                     {/* Hero Slider and Stacked Banners */}
                     <HeroSlider />
 

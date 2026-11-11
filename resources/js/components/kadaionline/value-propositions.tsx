@@ -1,4 +1,10 @@
-import { PackageCheck, Truck, ShieldCheck, TrendingUp, CircleDollarSign } from 'lucide-react';
+import {
+    PackageCheck,
+    Truck,
+    ShieldCheck,
+    TrendingUp,
+    CircleDollarSign,
+} from 'lucide-react';
 
 const VALUES = [
     {
@@ -42,15 +48,17 @@ export default function ValuePropositions() {
                     return (
                         <div
                             key={idx}
-                            className="flex flex-col items-center text-center p-2"
+                            className="flex flex-col items-center p-2 text-center"
                         >
-                            <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${val.color} mb-3 shadow-2xs`}>
+                            <div
+                                className={`flex h-12 w-12 items-center justify-center rounded-2xl ${val.color} mb-3 shadow-2xs`}
+                            >
                                 <Icon className="h-6 w-6" />
                             </div>
-                            <h3 className="text-xs sm:text-sm font-bold text-neutral-900 leading-tight">
+                            <h3 className="text-xs leading-tight font-bold text-neutral-900 sm:text-sm">
                                 {val.title}
                             </h3>
-                            <p className="mt-1 text-[11px] text-neutral-500 leading-snug">
+                            <p className="mt-1 text-[11px] leading-snug text-neutral-500">
                                 {val.description}
                             </p>
                         </div>

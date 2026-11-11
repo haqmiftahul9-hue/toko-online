@@ -1,0 +1,15 @@
+#!/bin/sh
+# Otomatis format dan validasi kode sebelum commit
+echo "Menjalankan pre-commit check (format & lint)..."
+
+npm run check:fix
+git add -u
+
+npm run check
+if [ $? -ne 0 ]; then
+    echo "Error: Terdeteksi masalah formatting atau linting sebelum commit."
+    exit 1
+fi
+
+exit 0
+

@@ -9,7 +9,7 @@ export default function ArticlesSection() {
                     <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
                         <Newspaper className="h-4 w-4" />
                     </span>
-                    <h2 className="text-base sm:text-lg font-black text-neutral-900 tracking-tight">
+                    <h2 className="text-base font-black tracking-tight text-neutral-900 sm:text-lg">
                         Info Menarik KadaiOnline
                     </h2>
                 </div>
@@ -27,7 +27,7 @@ export default function ArticlesSection() {
                 {ARTICLES.map((article) => (
                     <article
                         key={article.id}
-                        className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200/80 bg-white p-3.5 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer active:scale-[0.98]"
+                        className="group flex cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200/80 bg-white p-3.5 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
                     >
                         <div>
                             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-neutral-100">
@@ -43,16 +43,16 @@ export default function ArticlesSection() {
                                 <span className="text-[10px] font-semibold text-blue-700">
                                     {article.date}
                                 </span>
-                                <h3 className="mt-1 line-clamp-2 text-xs font-bold text-neutral-900 leading-snug group-hover:text-blue-700">
+                                <h3 className="mt-1 line-clamp-2 text-xs leading-snug font-bold text-neutral-900 group-hover:text-blue-700">
                                     {article.title}
                                 </h3>
-                                <p className="mt-1 line-clamp-2 text-[11px] text-neutral-500 leading-relaxed">
+                                <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-neutral-500">
                                     {article.description}
                                 </p>
                             </div>
                         </div>
 
-                        <div className="mt-3 pt-2.5 border-t border-neutral-100 text-[11px] font-bold text-blue-700 flex items-center gap-0.5 group-hover:underline">
+                        <div className="mt-3 flex items-center gap-0.5 border-t border-neutral-100 pt-2.5 text-[11px] font-bold text-blue-700 group-hover:underline">
                             <span>Baca Artikel Ini</span>
                             <ChevronRight className="h-3 w-3" />
                         </div>

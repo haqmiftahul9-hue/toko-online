@@ -17,7 +17,9 @@ const CATEGORY_TABS = [
     'Aksesoris',
 ];
 
-export default function RecommendedProducts({ onAddToCart }: RecommendedProductsProps) {
+export default function RecommendedProducts({
+    onAddToCart,
+}: RecommendedProductsProps) {
     const [activeTab, setActiveTab] = useState('Semua');
     const [visibleCount, setVisibleCount] = useState(24);
     const [addedId, setAddedId] = useState<string | null>(null);
@@ -50,20 +52,23 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
     };
 
     return (
-        <section id="rekomendasi-section" className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+        <section
+            id="rekomendasi-section"
+            className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8"
+        >
             {/* Header & Tabs */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200/80 pb-4">
+            <div className="flex flex-col justify-between gap-4 border-b border-neutral-200/80 pb-4 sm:flex-row sm:items-center">
                 <div className="flex items-center gap-2">
                     <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
                         <Lightbulb className="h-4 w-4" />
                     </span>
-                    <h2 className="text-xl font-black text-neutral-900 tracking-tight">
+                    <h2 className="text-xl font-black tracking-tight text-neutral-900">
                         Rekomendasi Untukmu
                     </h2>
                 </div>
 
                 {/* Filter Tabs */}
-                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+                <div className="flex scrollbar-none items-center gap-1.5 overflow-x-auto pb-1">
                     {CATEGORY_TABS.map((tab) => (
                         <button
                             key={tab}
@@ -104,14 +109,14 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
                                     />
 
                                     {/* Badges */}
-                                    <div className="absolute left-2 top-2 flex flex-col gap-1">
+                                    <div className="absolute top-2 left-2 flex flex-col gap-1">
                                         {product.isNew && (
-                                            <span className="rounded-sm bg-blue-700 px-1.5 py-0.5 text-[9px] font-black uppercase text-white shadow-xs">
+                                            <span className="rounded-sm bg-blue-700 px-1.5 py-0.5 text-[9px] font-black text-white uppercase shadow-xs">
                                                 Baru
                                             </span>
                                         )}
                                         {product.isSoldOut && (
-                                            <span className="rounded-sm bg-neutral-900 px-1.5 py-0.5 text-[9px] font-black uppercase text-white shadow-xs">
+                                            <span className="rounded-sm bg-neutral-900 px-1.5 py-0.5 text-[9px] font-black text-white uppercase shadow-xs">
                                                 Terjual Habis
                                             </span>
                                         )}
@@ -121,11 +126,13 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
                                     {!product.isSoldOut && (
                                         <button
                                             type="button"
-                                            onClick={() => handleQuickAdd(product)}
+                                            onClick={() =>
+                                                handleQuickAdd(product)
+                                            }
                                             aria-label="Tambah ke keranjang"
-                                            className={`absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full shadow-md transition-all ${
+                                            className={`absolute right-2 bottom-2 flex h-8 w-8 items-center justify-center rounded-full shadow-md transition-all ${
                                                 isJustAdded
-                                                    ? 'bg-emerald-600 text-white scale-110'
+                                                    ? 'scale-110 bg-emerald-600 text-white'
                                                     : 'bg-white text-neutral-800 opacity-0 group-hover:opacity-100 hover:bg-[#dc2626] hover:text-white'
                                             }`}
                                         >
@@ -140,19 +147,21 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
 
                                 {/* Product Info */}
                                 <div className="mt-2.5">
-                                    <h3 className="line-clamp-2 text-xs font-semibold text-neutral-800 leading-snug group-hover:text-blue-700">
+                                    <h3 className="line-clamp-2 text-xs leading-snug font-semibold text-neutral-800 group-hover:text-blue-700">
                                         {product.title}
                                     </h3>
 
                                     {/* Variant & Rating */}
                                     <div className="mt-1 flex items-center justify-between text-[11px] text-neutral-400">
-                                        <span className="truncate max-w-[90px]">
+                                        <span className="max-w-[90px] truncate">
                                             {product.variant || '-'}
                                         </span>
                                         {product.rating && (
-                                            <div className="flex items-center gap-0.5 text-amber-500 font-semibold shrink-0">
+                                            <div className="flex shrink-0 items-center gap-0.5 font-semibold text-amber-500">
                                                 <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                                                <span className="text-neutral-800">{product.rating}</span>
+                                                <span className="text-neutral-800">
+                                                    {product.rating}
+                                                </span>
                                                 <span className="text-[10px] text-neutral-400">
                                                     ({product.reviewCount})
                                                 </span>
@@ -163,7 +172,7 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
                                     {/* Price and Discount */}
                                     <div className="mt-2">
                                         <div className="flex items-baseline gap-1.5">
-                                            <span className="text-xs sm:text-sm font-black text-[#dc2626]">
+                                            <span className="text-xs font-black text-[#dc2626] sm:text-sm">
                                                 {formatCurrency(product.price)}
                                             </span>
                                             <span className="text-[10px] font-bold text-red-600">
@@ -171,7 +180,9 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
                                             </span>
                                         </div>
                                         <div className="text-[10px] text-neutral-400 line-through">
-                                            {formatCurrency(product.originalPrice)}
+                                            {formatCurrency(
+                                                product.originalPrice,
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -186,12 +197,15 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
                                 ) : (
                                     <div className="flex items-center justify-between text-[10px] font-medium text-neutral-500 group-hover:text-blue-700">
                                         <div className="flex items-center gap-1 truncate">
-                                            <MapPin className="h-3 w-3 text-neutral-400 shrink-0 group-hover:text-blue-700" />
+                                            <MapPin className="h-3 w-3 shrink-0 text-neutral-400 group-hover:text-blue-700" />
                                             <span className="truncate">
-                                                Tersedia di {product.locationCount} lokasi
+                                                Tersedia di{' '}
+                                                {product.locationCount} lokasi
                                             </span>
                                         </div>
-                                        <span className="text-neutral-300 group-hover:text-blue-700">&rsaquo;</span>
+                                        <span className="text-neutral-300 group-hover:text-blue-700">
+                                            &rsaquo;
+                                        </span>
                                     </div>
                                 )}
                             </div>
@@ -205,7 +219,7 @@ export default function RecommendedProducts({ onAddToCart }: RecommendedProducts
                 <button
                     type="button"
                     onClick={loadMore}
-                    className="inline-flex items-center justify-center rounded-xl border border-neutral-300 bg-white px-8 py-3 text-xs sm:text-sm font-bold text-neutral-800 shadow-2xs transition-all hover:border-blue-600 hover:text-blue-700 hover:shadow-md active:scale-[0.98]"
+                    className="inline-flex items-center justify-center rounded-xl border border-neutral-300 bg-white px-8 py-3 text-xs font-bold text-neutral-800 shadow-2xs transition-all hover:border-blue-600 hover:text-blue-700 hover:shadow-md active:scale-[0.98] sm:text-sm"
                 >
                     <span>Tampilkan Produk Lainnya</span>
                 </button>

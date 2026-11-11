@@ -57,4 +57,3 @@ export interface ArticleItem {
     image: string;
     date: string;
 }
-

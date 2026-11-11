@@ -543,35 +543,40 @@ export const ARTICLES: ArticleItem[] = [
     {
         id: 'art-1',
         title: 'Review 7 Tempat Main Mahjong di Jakarta untuk Nongkrong!',
-        description: 'JakartaNotebook kini hadir merekomendasikan tempat bermain Mahjong seru bareng sahabat tercinta...',
+        description:
+            'JakartaNotebook kini hadir merekomendasikan tempat bermain Mahjong seru bareng sahabat tercinta...',
         image: 'https://images.unsplash.com/photo-1596727147705-61a532a659bd?auto=format&fit=crop&w=400&q=80',
         date: '08 Nov 2026',
     },
     {
         id: 'art-2',
         title: 'Simak Cara Main Mahjong yang Sedang Naik Daun!',
-        description: 'Mahjong bukan sekadar permainan keberuntungan. Pelajari aturan dasar dan strategi jitunya di sini...',
+        description:
+            'Mahjong bukan sekadar permainan keberuntungan. Pelajari aturan dasar dan strategi jitunya di sini...',
         image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=400&q=80',
         date: '06 Nov 2026',
     },
     {
         id: 'art-3',
         title: '7 Wiper Mobil Terbaik, Awet dan Bikin Kaca Tetap Jernih!',
-        description: 'Cari wiper mobil terbaik yang awet dan minim suara? Simak rekomendasi wiper frameless berkualitas...',
+        description:
+            'Cari wiper mobil terbaik yang awet dan minim suara? Simak rekomendasi wiper frameless berkualitas...',
         image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80',
         date: '04 Nov 2026',
     },
     {
         id: 'art-4',
         title: '6 Jenis Wiper Mobil dan Tips Merawatnya agar Tetap Prima',
-        description: 'Terdapat beragam model wiper mobil yang memiliki karakteristik unik untuk visibilitas berkendara...',
+        description:
+            'Terdapat beragam model wiper mobil yang memiliki karakteristik unik untuk visibilitas berkendara...',
         image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=400&q=80',
         date: '02 Nov 2026',
     },
     {
         id: 'art-5',
         title: '8 Cas Aki Mobil Terbaik, Aman dan Mudah Digunakan!',
-        description: 'Temukan charger aki mobil cerdas dengan smart charging, fitur perbaikan voltase, dan anti-konslet...',
+        description:
+            'Temukan charger aki mobil cerdas dengan smart charging, fitur perbaikan voltase, dan anti-konslet...',
         image: 'https://images.unsplash.com/photo-1558441719-f538cb339c9f?auto=format&fit=crop&w=400&q=80',
         date: '30 Okt 2026',
     },
@@ -591,4 +596,3 @@ export const STORE_LOCATIONS = [
     { id: 'sby', name: 'Surabaya (Kertajaya & Mayjen Sungkono)' },
     { id: 'mdn', name: 'Medan (Gatot Subroto)' },
 ];
-

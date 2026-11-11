@@ -9,7 +9,7 @@ export default function TrendingSearches() {
                     <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 text-sky-700">
                         <Search className="h-4 w-4" />
                     </span>
-                    <h2 className="text-base sm:text-lg font-black text-neutral-900 tracking-tight">
+                    <h2 className="text-base font-black tracking-tight text-neutral-900 sm:text-lg">
                         Lagi Banyak Dicari
                     </h2>
                 </div>
